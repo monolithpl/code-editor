@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-git.js"></script>
+  <script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>
+<script type='text/javascript'>//<![CDATA[
+$(function(){
+//eg1 - basic each loop
+$.each($('.colors'), function(index, value) { 
+    console.log(index + ':' + value);
+    //[object HTMLDivElement]
+    //value is an object reference to the DOM representation of the div element.
+    //use js/jQuery to do something useful with it - see below examples
+});
+
+//eg2 - turn into jQuery object (so it inherits jQuery API functions)
+$('.colors').each(function(index, value) { 
+    console.log($(value));
+    //console.log($(this));  //same result
+});
+
+//eg3 - get the single native DOM element not as an array
+// Get the Nth element in the matched element set OR
+// Get the whole matched element set as a clean array
+$('.colors').each(function() { 
+    console.log($(this).get(0));    
+});
+
+console.log('--- variations -----------------------------------------');
+
+//eg4 - messing around...
+$('.colors').each(function() { 
+    console.log($(this).html());
+    console.log($(this).eq(0).html());
+    console.log($(this).first().html());
+});
+
+console.log('--- types ----------------------------------------------');
+
+//eg4 - messing around...(types)
+$('.colors:first').each(function() {
+    console.log(typeof(this));
+    console.log(this.toString());
+    console.log(typeof($(this)));
+    console.log($(this).toString());
+});
+});//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <div class="colors">Red</div>
+<div class="colors">Orange</div>
+<div class="colors">Green</div>
+  
+</body>
+
+</html>
+

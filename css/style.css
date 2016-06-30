@@ -1,0 +1,88 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-size: 1em;
+    background-color: #ddd;
+	margin: 0;
+}
+
+#resultframe {
+    height: 100%;
+    width: 100%; 
+}
+
+#htmleditor,#csseditor,#jseditor { 
+	margin: 0;
+	position: absolute;
+	top: 50;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.radio-tabs .state {
+    position: absolute;
+    left: -10000px;
+}
+#tabhtml:focus ~ .tabs #tabhtml-tab,
+#tabresult:focus ~ .tabs #tabresult-tab,
+#tabcss:focus ~ .tabs #tabcss-tab,
+#tabjs:focus ~ .tabs #tabjs-tab {
+
+}
+
+.radio-tabs .tab {
+    display: inline-block;
+    padding: .7em;
+    vertical-align: top;
+    background-color: #eee;
+    cursor: hand;
+    cursor: pointer;
+	width: 100px;
+	text-align: center;
+}
+.tab:hover {
+    background-color: #fff;
+}
+.buttonright {
+	border-radius: 2px;
+	margin: 2px;
+	float:right;
+	color:white;
+	width:60px !important;
+	background-color:darkgrey !important;
+}
+.button:hover {
+    background-color: #fff !important;
+	color: black !important;
+}
+#tabhtml[aria-selected] ~ .tabs #tabhtml-tab,
+#tabresult[aria-selected] ~ .tabs #tabresult-tab,
+#tabcss[aria-selected] ~ .tabs #tabcss-tab,
+#tabjs[aria-selected] ~ .tabs #tabjs-tab,
+#tabhtml:checked ~ .tabs #tabhtml-tab,
+#tabresult:checked ~ .tabs #tabresult-tab,
+#tabcss:checked ~ .tabs #tabcss-tab,
+#tabjs:checked ~ .tabs #tabjs-tab {
+    background-color: #fff;
+    border-bottom: .3em solid #fff;
+    cursor: default;
+}
+
+.radio-tabs .panels {
+    background-color: #fff;
+    padding: .7em;
+}
+.radio-tabs .panel {
+    display: none;
+}
+#tabhtml[aria-selected] ~ .panels #tabhtml-panel,
+#tabresult[aria-selected] ~ .panels #tabresult-panel,
+#tabcss[aria-selected] ~ .panels #tabcss-panel,
+#tabjs[aria-selected] ~ .panels #tabjs-panel,
+#tabhtml:checked ~ .panels #tabhtml-panel,
+#tabresult:checked ~ .panels #tabresult-panel,
+#tabcss:checked ~ .panels #tabcss-panel,
+#tabjs:checked ~ .panels #tabjs-panel {
+    display: block;
+}
