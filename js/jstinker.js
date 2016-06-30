@@ -273,8 +273,8 @@ $("document").ready(function() {
     });
     
     // RUN Button
-    $("#btnRun").click(function(event) {  
-        event.preventDefault();
+    $("#tab-4").click(function(event) {  
+        //event.preventDefault();
         
         var previewDoc = window.frames[0].document;
         
@@ -324,7 +324,7 @@ $("document").ready(function() {
     $("#btnRun").click();
     
     // TIDYUP Button
-    $("#btnTidyUp").click(function(event) {
+    $("#tab-6").click(function(event) {
         event.preventDefault();
         
         var html = ace.edit("html-editor").getSession().getValue();
@@ -342,12 +342,25 @@ $("document").ready(function() {
         
         ace.edit("js-editor").getSession().setValue(js2);
     });
+	//save
+    $("#tab-5").click(function(event) {
+		event.preventDefault();
+		store.set('example', [htmlEditor.getValue(),cssEditor.getValue(),jsEditor.getValue()]);
 
-    // Together Button
-    $("#btnTogether").click(function(event) {
-      event.preventDefault();
-
-      TogetherJS(this);
-      return false;
+    });
+	//open
+	 $("#tab-7").click(function(event) {
+		event.preventDefault();
+		var openfile = store.get('example');
+		htmlEditor.setValue(openfile[0]);
+		cssEditor.setValue(openfile[1]);
+		jsEditor.setValue(openfile[2]);
+    });
+	//ex1
+	 $("#tab-8").click(function(event) {
+		event.preventDefault();
+		htmlEditor.setValue("<h1>Ripple Click Effect</h1><ul><li><a>Dashboard</a></li><li><a>My Account</a></li><li><a>Direct Messages</a></li><li><a>Chat Rooms</a></li><li><a>Settings</a></li><li><a>Logout</a></li></ul>");
+		cssEditor.setValue("@import url(http://fonts.googleapis.com/css?family=Montserrat|Bitter);ul li,ul li a{position:relative}.ink,ul li a{display:block}*{margin:0;padding:0}body{background:url(assets/b1.png) center center no-repeat fixed;background-size:cover}h1{font:400 32px/32px Bitter;color:#fff;text-align:center;padding:85px 100px}ul{background:#fff;border-top:6px solid #70c1c1;width:200px;margin:0 auto}ul li{list-style-type:none;overflow:hidden}ul li a{font:400 14px/28px Montserrat;color:#3d8e8e;padding:10px 15px;text-decoration:none;cursor:pointer;user-select:none}.ink{position:absolute;background:#b7e0e0;border-radius:100%;transform:scale(0)}.ink.animate{animation:ripple .65s linear}@keyframes ripple{100%{opacity:0;transform:scale(2.5)}}");
+		jsEditor.setValue('var parent, ink, d, x, y;$("ul li a").click(function(e){parent = $(this).parent();if(parent.find(".ink").length === 0);parent.prepend("<span class=ink></span>");ink = parent.find(".ink");ink.removeClass("animate");if(!ink.height() && !ink.width()){d = Math.max(parent.outerWidth(), parent.outerHeight());ink.css({height: d, width: d});}x = e.pageX - parent.offset().left - ink.width()/2;y = e.pageY - parent.offset().top - ink.height()/2;ink.css({top: y+"px", left: x+"px"}).addClass("animate");});');
     });
 });
